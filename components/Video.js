@@ -404,7 +404,7 @@ class Video extends Component {
           // onBuffer={() => this.onBuffer()} // Callback when remote video is buffering
           onTimedMetadata={e => onTimedMetadata(e)} // Callback when the stream receive some metadata
         />
-        {!hideControl ? (
+        {hideControl ? null: (
           <Controls
             ref={(ref) => { this.controls = ref }}
             toggleMute={() => this.toggleMute()}
@@ -428,7 +428,7 @@ class Video extends Component {
             controlDuration={controlDuration}
             hideFullScreenControl={hideFullScreenControl}
           />
-        ) : null}
+        )}
       </Animated.View>
     )
   }
@@ -512,7 +512,7 @@ Video.defaultProps = {
   theme: defaultTheme,
   resizeMode: 'contain',
   controlDuration: 3,
-  hideControl: true,
+  hideControl: false,
 }
 
 export default Video
